@@ -1,4 +1,8 @@
-# 📜 Curriculum Vitae
+---
+layout: page
+title: 📜 Curriculum Vitae
+permalink: /cv/
+---
 
 # Career Objective
 
@@ -41,6 +45,7 @@ Bengaluru, India
     Period: Aug 2016 - Mar 2019
     
     > How to work with a global team, problem solving and understanding professional responsibility
+
 ### Defense Research and Development Organization
 Bengaluru, India
 - **Student Intern**

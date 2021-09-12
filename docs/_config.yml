@@ -22,7 +22,7 @@ title: Karan Jayachandra
 email: mail@karanjayachandra.com
 description: >- # this means to ignore newlines until "baseurl:"
   Karan's Website
-domain: MrKaranJ.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
+domain: mrkaranj.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
 url: https://MrKaranJ.github.io  # the base hostname and protocol for your site, e.g. http://example.com
 github_username:  MrKaranJ
 

@@ -1,13 +1,7 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: home
-title: Home Page
+title: 🏠 Home Page
 ---
-
-# 🏠 Homepage
-
 I am an **Electrical Engineer** wandering across the pale blue dot always searching for the next interesting opportunity. On this page, you can look at my bio, my qualifications or browse through my blog. You can also contact me via social media or email using on of the above links.
 
 # This is Me
