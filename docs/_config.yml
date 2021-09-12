@@ -18,44 +18,30 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+
+# Overall Meta Data
 title: Karan Jayachandra
 email: mail@karanjayachandra.com
 description: >- # this means to ignore newlines until "baseurl:"
   Karan's Website
-domain: mrkaranj.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
-url: https://MrKaranJ.github.io  # the base hostname and protocol for your site, e.g. http://example.com
+domain: mrkaranj.github.io
+url: https://MrKaranJ.github.io
 github_username:  MrKaranJ
 
-# Build settings
-# theme: minima
-remote_theme: b2a3e8/jekyll-theme-console
-plugins:
-  - jekyll-feed
-
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-
-header_pages:
-  - index.md
-  - cv.md
-
+# Build Theme and Settings
+theme: jekyll-theme-console
 style: light
 
-footer: 'Reach me via <a href="mailto:mail@karanjayachandra.com">Email</a> or send a connection request in <a href="https://www.linkedin.com/in/mrkaranj/">LinkedIn</a>'
+# Required Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+
+# List of pages for the Nav Bar
+header_pages:
+  - home/index.md
+  - cv/index.md
+  - blog/index.md
+
+# Theme Variables
+footer: '<a href="mailto:mail@karanjayachandra.com">Email</a> me or connect via <a href="https://www.linkedin.com/in/mrkaranj/">LinkedIn</a> or <a href="https://github.com/MrKaranJ">GitHub</a>'

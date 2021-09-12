@@ -4,61 +4,52 @@ title: 📜 Curriculum Vitae
 permalink: /cv/
 ---
 
+# Download the PDF version [here](https://karanjayachandra-my.sharepoint.com/:b:/p/mail/EbEE5MnaXFhPtAYi-UDxt7YBcQGfvSZhHjhY-4pXe6WoFw?e=RFPAJe).
+
 # Career Objective
 
-I **aim** to build expertise as an Engineer while
-meeting challenging organizational goals which
-necessitate innovation. Eventually, I would like
-to take up product development ownership.
+I **aim** to build expertise as an Engineer while meeting challenging organizational goals which necessitate innovation. Eventually, I would like to take up product development ownership.
 
 My main interests are:
-- Signal Processing for Sensor Arrays
-- Estimation and Detection of Signals
-- Design of Antenna and Antenna Arrays
+> - Signal Processing for Sensor Arrays
+> - Estimation and Detection of Signals
+> - Design of Antenna and Antenna Arrays
 
 ---
 
 # Work Experience
 
-### NXP Semiconductors
+## NXP Semiconductors
 Eindhoven, The Netherlands
-- **Thesis Intern**
-    
-    Period: Nov 2020 - Aug 2021
-    
-    > Generating innovative ideas, working with multiple stakeholders and academic knowledge
-- **Student Intern Technical** 
 
-    Period: Aug 2020 - Nov 2020
-    
-    > How to work with Automotive Radar, obtain Dutch Work Experience in a research oriented team
+|Role|Period|Key Learning|
+|:--|-:-|--:|
+|**Graduate Thesis Intern**|Nov 2020 - Aug 2021|Generating innovative ideas, working with multiple stakeholders and academic knowledge.|
+|**Student Intern (Technical)**|Aug 2020 - Nov 2020|How to work with Automotive Radar, obtain Dutch Work Experience in a research oriented team.|
+|<img width=200/>|<img width=75/>|<img width=100/>|
 
-### SAP India Pvt. Ltd.
+## SAP India Pvt. Ltd.
 Bengaluru, India
-- **Associate Business Process Consultant**
 
-    Period: Apr 2019 - Jul 2019
-    
-    > How to take ownership of solutions, meet clients' requirements and expectations through time management and organization
-- **Associate Development Consultant**
+|Role|Period|Key Learning|
+|:--|-:-|--:|
+|**Associate Business Process Consultant**|Apr 2019 - Jul 2019|How to take ownership of solutions, meet clients' requirements and expectations through time management and organization.|
+|**Associate Development Consultant**|Aug 2016 - Mar 2019|How to work with a global team, problem solving and understanding professional responsibility.|
+|<img width=180/>|<img width=85/>|<img width=100/>|
 
-    Period: Aug 2016 - Mar 2019
-    
-    > How to work with a global team, problem solving and understanding professional responsibility
-
-### Defense Research and Development Organization
+## Defense Research and Development Organization
 Bengaluru, India
-- **Student Intern**
 
-    Period: Apr 2015 - Jul 2015
-    
-    > How to work in a professional environment and work towards any deliverables
+|Role|Period|Key Learning|
+|:--|-:-|--:|
+|**Student Intern**|Apr 2015 - Jul 2015|How to work in a professional environment and work towards any deliverables.|
+|<img width=200/>|<img width=75/>|<img width=100/>|
 
 ---
 
 # Education
 
-### Master's Degree
+## Master's Degree
 
 **Electrical Engineering**
 
@@ -66,7 +57,7 @@ Specialized in Signals & Systems at [TU Delft](https://www.tudelft.nl/en/) from 
 
 > Studied Statistical Signal Processing, Radar Systems and Antenna Design
 
-### Bachelor's Degree
+## Bachelor's Degree
 
 **Electronics and Communication Engineering**
 
@@ -80,13 +71,13 @@ Studied at [Amrita Vishwa Vidyapeetham](https://www.amrita.edu/) from Jul 2012 t
 
 ## Hard Skills
 
-|Technology|Subjective Score|
-|:--|--:|
-|MATLAB|✔️✔️✔️✔️✔️|
-|CST Studio|✔️✔️✔️|
-|C / C++|✔️✔️✔️|
-|Python|✔️✔️✔️|
-|VHDL / Verilog|✔️✔️|
+|Technology|<img width=75/>|Subjective Evaluation|
+|:--|---|--:|
+|MATLAB||✔️✔️✔️✔️✔️|
+|CST Studio||✔️✔️✔️|
+|C / C++||✔️✔️✔️|
+|Python||✔️✔️✔️|
+|VHDL / Verilog||✔️✔️|
 
 ## Soft Skills
 
