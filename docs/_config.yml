@@ -26,10 +26,10 @@ description: >- # this means to ignore newlines until "baseurl:"
   Karan's Website
 domain: mrkaranj.github.io
 url: https://MrKaranJ.github.io
-github_username:  MrKaranJ
+logo: /assets/logo.png
 
 # Build Theme and Settings
-remote_theme: b2a3e8/jekyll-theme-console
+remote_theme: MrKaranJ/jekyll-theme-console
 style: light
 
 # Required Plugins
