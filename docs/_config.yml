@@ -51,3 +51,11 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+header_pages:
+  - index.md
+  - cv.md
+
+style: light
+
+footer: 'Reach me via <a href="mailto:mail@karanjayachandra.com">Email</a> or send a connection request in <a href="https://www.linkedin.com/in/mrkaranj/">LinkedIn</a>'
