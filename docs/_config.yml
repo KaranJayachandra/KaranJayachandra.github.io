@@ -27,7 +27,8 @@ url: https://MrKaranJ.github.io  # the base hostname and protocol for your site,
 github_username:  MrKaranJ
 
 # Build settings
-theme: minima
+# theme: minima
+remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
 
