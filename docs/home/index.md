@@ -3,6 +3,9 @@ layout: default
 title: 🏠 Home
 permalink: /
 ---
+
+![Profile](profile.jpg "Profile")
+
 I am an **Electrical Engineer** wandering across the pale blue dot constantly searching for the next interesting opportunity. On this page, you can have a look at my bio, my qualifications or browse through my blog. You can also contact me via social media or email using on of the links at the bottom of the page.
 
 # This is Me
