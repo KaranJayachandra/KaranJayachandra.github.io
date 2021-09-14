@@ -4,13 +4,7 @@ title: 🏠 Home
 permalink: /
 ---
 
-<p align="center">
-    <img src="/home/profile.jpg" alt="Profile" width="400"/>
-</p>
-
-<div class="pic">
 <img src="/home/profile.jpg" alt="Profile">
-</div>
 
 I am an **Electrical Engineer** wandering across the pale blue dot constantly searching for the next interesting opportunity. On this page, you can have a look at my bio, my qualifications or browse through my blog. You can also contact me via social media or email using on of the links at the bottom of the page.
 
