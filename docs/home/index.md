@@ -12,11 +12,12 @@ I am an **Electrical Engineer** wandering across the pale blue dot constantly se
 
 My guiding principles in life are [Rationalism](https://en.wikipedia.org/wiki/Rationalism) and [Humanism](https://en.wikipedia.org/wiki/Humanism).
 
-> My passion for science is matched by the need to innovate for a better future.
+
+> I believe in striving to push the boundaries of science. But this is matched by the need to innovate for a better future.
 
 # The Gist
 
-I am a Tamilian born in Hyderabad and brought up in Kolar. I am naturally inquisitive, an unapologetic skeptic and have a thirst for knowledge. I am always looking for new avenues to learn and grow. I am currently on a well deserved vacation after completing by Master's Degree in Electrical Engineering from TU Delft.
+I am a Tamilian born in Hyderabad and brought up in Kolar. I am naturally inquisitive, an unapologetic skeptic and have a thirst for knowledge. I am always looking for new avenues to learn and grow. Currently, I am on a well deserved vacation after completing by Master's Degree in Electrical Engineering from TU Delft. After this break, I will be joining NXP as a Radar Signal Processing Engineer.
 
 # Leisure
 
