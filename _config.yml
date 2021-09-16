@@ -27,6 +27,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 domain: mrkaranj.github.io
 url: https://MrKaranJ.github.io
 logo: /assets/logo.png
+favicon: /assets/title.png
 
 # Build Theme and Settings
 remote_theme: MrKaranJ/jekyll-theme-console
