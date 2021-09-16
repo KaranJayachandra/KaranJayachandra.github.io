@@ -10,4 +10,4 @@ If you haven't seen Norm's moth joke, [here](https://www.youtube.com/watch?v=YxD
 
 Rest In Peace Norm. You will be missed.
 
-P.S. I don't think I laughed more that at a talk show segment more than [this](https://www.youtube.com/watch?v=bKmadR4Ye54) one with [Conan](https://en.wikipedia.org/wiki/Conan_O'Brien).
+P.S. I don't think I've laughed more that at a talk show segment hosted by [Conan](https://en.wikipedia.org/wiki/Conan_O'Brien) than [this](https://www.youtube.com/watch?v=bKmadR4Ye54) one.
