@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Norm Macdonald"
-date:   2021-09-12 19:55:00 +0200
+date:   2021-09-16 14:06:00 +0200
 categories: general note
 ---
 If you haven't seen Norm's moth joke, [here](https://www.youtube.com/watch?v=YxD3pT8C9-A) you go. It's not everyone's cup of tea but it definitely deserves a chance.
