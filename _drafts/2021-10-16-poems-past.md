@@ -1,9 +1,11 @@
 ---
 layout: post
 title:  "Poems From The Past"
-date:   2100-10-06 09:38:00 +0200
+date:   2021-10-16 16:57:00 +0200
 categories: poem
 ---
+
+These were poems that I wrote at the start of my Bachelor's studies. Please bear with them because I am sure they aren't good. However I did want to add them here for future reference. I can then look back and laugh at how bad the writing was.
 
 **The Engineer**
 
