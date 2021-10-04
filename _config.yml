@@ -45,4 +45,4 @@ header_pages:
   - blog/index.md
 
 # Theme Variables
-footer: '<a href="https://t.me/MrKaranJ">Message</a> or <a href="mailto:mail@karanjayachandra.com">Email</a> me or connect via <a href="https://www.linkedin.com/in/mrkaranj/">LinkedIn</a> or <a href="https://github.com/MrKaranJ">GitHub</a>'
+footer: '<a href="https://t.me/MrKaranJ">Message</a> \t <a href="mailto:mail@karanjayachandra.com">Email</a> \t <a href="https://www.linkedin.com/in/mrkaranj/">LinkedIn</a> \t <a href="https://github.com/MrKaranJ">GitHub</a>'
