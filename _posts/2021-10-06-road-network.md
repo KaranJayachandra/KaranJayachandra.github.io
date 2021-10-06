@@ -5,11 +5,11 @@ date:   2021-10-06 09:38:00 +0200
 categories: general python
 ---
 
-**The Gist:** I was inspired to create a poster that was based on reddit post. I document the process here.
+**The Gist:** I was inspired to create a poster that was based on a reddit post. I document the process here.
 
 <img src="{{site.url}}/assets/images/road_network_low.png" alt="Road Network">
 
-Some time ago, I came across a [post](https://www.reddit.com/r/dataisbeautiful/comments/lnlkp5/mapping_the_main_roads_of_the_world_oc/) on the subreddt r/dataisbeautiful and liked the aesthetics of the visualization. I thought this would make for a very good poster especially if the location meant something to the owner. Therefore, I started digging into how I could make one for myself. Using data sets form governmental agencies seemed too time consuming. However while I was mindlessly searching the internet, I came across the python library called [OSMNX](https://osmnx.readthedocs.io/en/stable/) that directly accesses data from OpenStreetMap and can fetch the data directly. This seemed to be the method with the least hassle. However installing this package took me quite sometime to figure out mainly because of dependencies. I am not used to working with such libraries. Luckily this [blog](https://geoffboeing.com/2016/11/osmnx-python-street-networks/) post helped me quite a bit.
+Some time ago, I came across a [post](https://www.reddit.com/r/dataisbeautiful/comments/lnlkp5/mapping_the_main_roads_of_the_world_oc/) on the subreddt r/dataisbeautiful and liked the aesthetics of the visualization. I thought this would make for a very good poster especially if the location meant something to the owner. Therefore, I started digging into how I could make one for myself. Using data sets form governmental agencies seemed too time consuming. However while I was mindlessly searching the internet, I came across the python library called [OSMNX](https://osmnx.readthedocs.io/en/stable/) that directly accesses data from OpenStreetMap and can fetch the data without much hassle. However installing this package took me quite sometime to figure out mainly because of dependencies. I am not used to working with such libraries. Luckily this [blog](https://geoffboeing.com/2016/11/osmnx-python-street-networks/) post helped me quite a bit.
 
 {% highlight python %}
 import osmnx as ox
