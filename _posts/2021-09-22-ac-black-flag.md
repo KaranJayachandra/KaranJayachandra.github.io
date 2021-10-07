@@ -2,7 +2,7 @@
 layout: post
 title:  "Assassin’s Creed: Black Flag"
 date:   2021-09-22 15:03:00 +0200
-categories: gaming review
+categories: gaming
 ---
 
 Rating: ⭐⭐⭐⭐

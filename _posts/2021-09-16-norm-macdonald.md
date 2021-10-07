@@ -2,7 +2,7 @@
 layout: post
 title:  "Norm Macdonald"
 date:   2021-09-16 14:06:00 +0200
-categories: general note
+categories: personal
 ---
 
 **The Gist:** I enjoyed Norm's comedy and the world is a worse place without him in it.

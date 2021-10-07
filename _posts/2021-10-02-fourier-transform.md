@@ -2,7 +2,7 @@
 layout: post
 title:  "Fourier Transform"
 date:   2021-10-02 18:42:00 +0200
-categories: signalprocessing basic
+categories: signalprocessing
 ---
 
 **The Gist:** If you would like to solve partial derivates easily or process data in the frequency domain, Fourier Transform is the tool you need. If you interested in reading more, please read more below where I also demonstrate with an example.
