@@ -23,7 +23,9 @@ My main interests are:
 ## [NXP Semiconductors](https://www.nxp.com/)
 Eindhoven, The Netherlands
 
-I am currently working as a **Radar Signal Processing Engineer** since Oct 2021.
+I am currently working as a **Radar Signal Processing Engineer** since Oct 2021. I am working on innovative Radar Systems for the next generation of safe and autonomous vehicles.
+
+> I am ramping up on the latest and greatest in the Automotive Radar field.
 
 I worked as a **Graduate Thesis Intern** from Nov 2020 to Aug 2021. I applied Sensor Management to develop a system to allow for multiple Automotive Radars to cooperative when using spectral resources. My thesis can be found [here](http://resolver.tudelft.nl/uuid:a6d05da8-6b93-4e6c-9a3e-2499ec66f122).
 
