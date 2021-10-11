@@ -2,7 +2,7 @@
 layout: post
 title:  "Road Network"
 date:   2021-10-06 09:38:00 +0200
-categories: general python
+categories: python
 ---
 
 **The Gist:** I was inspired to create a poster that was based on a reddit post. I document the process here.

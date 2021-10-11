@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to the Blog!"
 date:   2021-09-12 19:55:00 +0200
-categories: general note
+categories: personal
 ---
 
 **The Gist:** I would like to document my experiences in life and have started a blog. Please have a look at some of my entries if you are interested.

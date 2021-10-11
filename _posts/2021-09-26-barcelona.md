@@ -2,7 +2,7 @@
 layout: post
 title:  "Barcelona: Visit the MESSIah"
 date:   2021-09-26 16:46:00 +0200
-categories: travel europe
+categories: travel
 ---
 
 **The Gist:** Barcelona is an amazing city and a must visit in Europe. I thoroughly enjoyed every minute of my trip and will definitely have to go there again. For more details read on below.
