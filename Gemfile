@@ -10,14 +10,15 @@
 # Source for the gems
 source "https://rubygems.org"
 
-# Gem to allow for hosting on GitHub Pages
-gem "github-pages", "~> 219", group: :jekyll_plugins
-
 # Allow for HTTPS connections
 gem "webrick"
 
-# Can generate an atom feed for posts
 group :jekyll_plugins do
+  # Gem to allow for hosting on GitHub Pages
+  gem "github-pages", "~> 219"
+  # Gem to allow for added support or table
+  gem "jekyll-spaceship"
+  # Can generate an atom feed for posts
   gem "jekyll-feed", "~> 0.12"
 end
 

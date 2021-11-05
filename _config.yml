@@ -8,19 +8,17 @@ logo: /assets/logo.png
 favicon: /assets/title.png
 
 # Build Theme and Settings
-remote_theme: MrKaranJ/jekyll-theme-console
+remote_theme: KaranJayachandra/jekyll-theme-console
 style: light
 
 # Required Plugins
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-spaceship
 
 # List of pages for the Nav Bar
 header_pages:
   - home/index.md
   - cv/index.md
   - blog/index.md
-
-# Theme Variables
-footer: '<a href="https://t.me/MrKaranJ">Message</a> <a href="mailto:mail@karanjayachandra.com">Email</a> <a href="https://www.linkedin.com/in/mrkaranj/">LinkedIn</a> <a href="https://github.com/MrKaranJ">GitHub</a>'
