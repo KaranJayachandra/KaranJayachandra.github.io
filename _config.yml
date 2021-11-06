@@ -22,3 +22,8 @@ header_pages:
   - home/index.md
   - cv/index.md
   - blog/index.md
+
+# Use the Mathjax Processor from Spaceship
+jekyll-spaceship:
+  processors:
+    - mathjax-processor
