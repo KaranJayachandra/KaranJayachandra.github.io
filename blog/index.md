@@ -4,4 +4,4 @@ title: 📖 Blog
 permalink: /blog/
 ---
 
-# Blog Posts
+# Posts
