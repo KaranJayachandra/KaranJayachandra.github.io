@@ -29,3 +29,7 @@ As soon as a file is created or edited a SHA object is created with the content/
 When you commit a change, a commit object is created with references to the all the trees related to that commit which in turn has a reference to all the changes. Git therefore has a reference to the file as a hash for every version of the file at each commit point.
 
 Even a branch is just a reference to a commit. Subsequent commits on that branch are then based on that particular commit.
+
+GIT Merge and Rebase are two methods of merging branches. Rebase restarts the starting point of the current branch to the new 'base'. Merge starts applying your changes on the current state of the 'to' branch.
+
+Rebase is good to keep log clean but not when you want to preserve history without corrupting it. The rebase rolls back to the last common commit and applies the changes based on the from branch and the the commits that are currently in the to branch.
