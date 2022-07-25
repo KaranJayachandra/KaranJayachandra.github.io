@@ -6,7 +6,7 @@ domain: www.karanjayachandra.com
 url: https://www.karanjayachandra.com
 logo: /assets/logo.png
 favicon: /assets/title.png
-jekyll_baseurl: karanjayachandra.com
+jekyll_baseurl: www.karanjayachandra.com
 
 # Build Theme and Settings
 remote_theme: KaranJayachandra/jekyll-theme-console
