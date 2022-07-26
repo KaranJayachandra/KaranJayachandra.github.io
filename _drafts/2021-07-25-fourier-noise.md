@@ -61,4 +61,4 @@ From the above we can say that for the real part of the FFT of Random Noise $n[m
 
 $$\begin{aligned}E[\mathscr{R}(N[k])] &= 0 \\ E[(\mathscr{R}(N[k]))^2] &= \frac{N\sigma^2}{2}\end{aligned}$$
 
-I expect that the same result can be expanded for the imaginary part of the FFT output.
+I expect that the same result can be expanded for the imaginary part of the FFT output. 
