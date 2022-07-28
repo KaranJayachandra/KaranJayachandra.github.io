@@ -51,7 +51,7 @@ $$\sin (a) \cos (b) = \frac{1}{2} \left(\sin (a + b) + \sin (a - b) \right)$$
 
 This simplifies the summation back into the original summation and it ends up as:
 
-$$\begin{aligned}\sin (\frac{k}{2}) S &= \sin (\frac{k}{2}) + \frac{1}{2} (\cancel{\sin (\frac{3k}{2})} - \sin(\frac{k}{2})) + \frac{1}{2} (\cancel{\sin (\frac{5k}{2})} - \cancel{\sin(\frac{3k}{2})}) \\ & \qquad + ... + \frac{1}{2} (\sin ((N - \frac{1}{2})k) - \cancel{\sin((N - \frac{3}{2})k)}) \\ &= \frac{1}{2} \left(\sin ((N - \frac{1}{2})k) + \sin(\frac{k}{2})\right) \\ &= \sin(\frac{Nk}{2}) \cos(\frac{(N-1)k}{2}) \\ &= 0\end{aligned}$$
+$$\begin{aligned}\sin (\frac{k}{2}) S &= \sin (\frac{k}{2}) + \frac{1}{2} (\cancel{\sin (\frac{3k}{2})} - \sin(\frac{k}{2})) + \frac{1}{2} (\cancel{\sin (\frac{5k}{2})} - \cancel{\sin(\frac{3k}{2})}) \\ & \qquad + ... + \frac{1}{2} (\sin ((N - \frac{1}{2})k) - \cancel{\sin((N - \frac{3}{2})k)}) \\ &= \frac{1}{2} \left(\sin ((N - \frac{1}{2})k) + \sin(\frac{k}{2})\right) \\ &= \sin(\frac{Nk}{2}) \cos(\frac{(N-1)k}{2}) \\ &= \sin(2\pi k) \cos(\frac{2(N-1)\pi k}{N}) \\ &= 0\end{aligned}$$
 
 The above term equates to zero because $\sin$ terms always goes to zero because any integer multiple of $2\pi$ is zero. Seems like a long walk to nothing but it makes our life much easier.
 
