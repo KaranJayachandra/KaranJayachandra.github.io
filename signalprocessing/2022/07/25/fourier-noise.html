@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self'; object-src 'self'; child-src 'self'; form-action 'none'; base-uri 'self'" /> -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-XSS-Protection" content="1;mode=block" always>
+<meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" href="/assets/title.png" type="image/x-icon">
+  <title>Fourier Transform of White Noise</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="Fourier Transform of White Noise">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="SOURCES: DSP Stack Exchange My Rank Prof. Unnikrishna Pillai Iqbal Shahid">
+<meta property="og:description" content="SOURCES: DSP Stack Exchange My Rank Prof. Unnikrishna Pillai Iqbal Shahid">
+<link rel="canonical" href="https://www.karanjayachandra.com/signalprocessing/2022/07/25/fourier-noise.html">
+<meta property="og:url" content="https://www.karanjayachandra.com/signalprocessing/2022/07/25/fourier-noise.html">
+<meta property="og:site_name" content="Karan Jayachandra">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-07-25T13:39:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Fourier Transform of White Noise">
+<script type="application/ld+json">
+{"headline":"Fourier Transform of White Noise","dateModified":"2022-07-25T13:39:00+00:00","datePublished":"2022-07-25T13:39:00+00:00","description":"SOURCES: DSP Stack Exchange My Rank Prof. Unnikrishna Pillai Iqbal Shahid","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.karanjayachandra.com/signalprocessing/2022/07/25/fourier-noise.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.karanjayachandra.com/assets/logo.png"}},"url":"https://www.karanjayachandra.com/signalprocessing/2022/07/25/fourier-noise.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" type="text/css" href="/assets/main-light.css">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+<header>
+  <div>
+    <div class="logo"><img src="/assets/logo.png" alt="Logo" height="30" width="50"></div>
+    <div class="menu">
+      <ul>
+<li><a href="/">🏠 Home</a></li>
+<li><a href="/cv/">📜 CV</a></li>
+<li><a href="/blog/">📖 Blog</a></li>
+</ul>
+    </div>
+  </div>
+</header>
+<main>
+      <h1>Fourier Transform of White Noise</h1>
+2022-07-25 13:39
+<br><br>
+<p>SOURCES: <a href="https://dsp.stackexchange.com/questions/8418/what-is-the-phase-and-magnitude-response-of-white-noise">DSP Stack Exchange</a> <a href="https://blog.myrank.co.in/sum-of-sines-or-cosines-of-n-angles-in-a-p/">My Rank</a> <a href="https://www.youtube.com/watch?v=p_7IL-Cb4m0">Prof. Unnikrishna Pillai</a> <a href="https://www.youtube.com/watch?v=NDVQ2ttIrAQ">Iqbal Shahid</a></p>
+
+<p><strong>The Gist:</strong> If you interested in understanding what happens to a Normal Random Variable after applyting a Fourier Transform to it, read on!</p>
+
+<h1 id="the-fourier-tranform">The Fourier Tranform</h1>
+<p>The <a href="https://www.karanjayachandra.com/signalprocessing/2021/10/02/fourier-transform.html">Fourier Transform</a> represents a signal in the frequency domain. There are multiple methods of performing this operation but the most commonly used one is the Discrete Fourier Transform. It adapts the Fourier Transform to time limited signals. Mathematically the operation is described as shown below:</p>
+
+<p>$$\begin{aligned} S[k] &amp;= \sum_{n=0}^{N-1} s[n] e^{\frac{-j2\pi nk}{N}} \\ &amp;= \sum_{n=0}^{N-1} s[n]cos(\frac{2\pi nk}{N}) - j \sum_{n=0}^{N-1} s[n]sin(\frac{2\pi nk}{N})\end{aligned}$$</p>
+
+<h1 id="the-random-signal">The Random Signal</h1>
+<p>If the samples of $n[m]$ are normal disbributed with mean equal to 0 and variance equal to $\sigma^2$ which is the case for random noise, we would like to understand what happens to the distribution of $N[k]$. Mathematical this means that:</p>
+
+<p>$$\begin{aligned} E[n[m]] &amp;= 0 \\ E[(n[m])^2] &amp;= \sigma^2\end{aligned}$$</p>
+
+<h1 id="the-mean">The Mean</h1>
+<p>If look at the expected value of the complex value $N[k]$ is defined below, which would be the mean of the samples in the frequency domain:</p>
+
+<p>$$\begin{aligned}E[S[k]] &amp;= E[\mathscr{R}(S[k])] + jE[\mathscr{I}(S[k])] \\ &amp;= \sum_{n=0}^{N-1} E[s[n]\cos(\frac{2\pi nk}{N})] - j \sum_{n=0}^{N-1} E[s[n]\sin(\frac{2\pi nk}{N})] \\ &amp;=\sum_{n=0}^{N-1} E[s[n]]\cos(\frac{2\pi nk}{N}) - j \sum_{n=0}^{N-1} E[s[n]]\sin(\frac{2\pi nk}{N}) \\ &amp;=\sum_{n=0}^{N-1} 0 \; \cos(\frac{2\pi nk}{N}) - j \sum_{n=0}^{N-1} 0 \; \sin(\frac{2\pi nk}{N}) \\ &amp;= 0\end{aligned}$$</p>
+
+<h1 id="the-variance">The Variance</h1>
+<p>The variances of the Fourier Tranform would be the expected value of the $N[k]^2$. It is calculated in the same way, therefore, let’s concentrate on the real part for now:</p>
+
+<p>$$\begin{aligned}E[\mathscr{R}(N[k])^2)] &amp;= E[\mathscr{R}(N[k]) . \mathscr{R}(N[m])] \\ &amp;= E[\sum_{n=0}^{N-1} s[n]cos(\frac{2\pi nk}{N}) . \sum_{p=0}^{N-1} s[p]cos(\frac{2\pi pk}{N})]\end{aligned}$$</p>
+
+<p>To simplify this, we use some mathematical tricks to collapse the two summations into one. This enables us to move the expected value operation into the summation operation.</p>
+
+<p>$$\begin{aligned}E[\mathscr{R}(N[k])^2)] &amp;= E[\sum_{n=0}^{N-1} s[n]cos(\frac{2\pi nk}{N}) . \sum_{p=0}^{N-1} s[p]cos(\frac{2\pi pk}{N})] \\ &amp;= \sum_{n=0}^{N-1} \sum_{p=0}^{N-1} s[n] s[p] \delta(n - p) cos(\frac{2\pi nk}{N}) cos(\frac{2\pi pk}{N})\end{aligned}$$</p>
+
+<p>Now the summations can be collapsed because the limits are the same and the variables are the same as well. Most importantly, when $n \neq p$ the summation goes to zero.</p>
+
+<p>$$\begin{aligned}E[\mathscr{R}(N[k])^2)] &amp;= E[\sum_{n=0}^{N-1} s[n]^2 {cos}^2(\frac{2\pi nk}{N})] \\ &amp;= \sum_{n=0}^{N-1} E[s[n]^2] {\cos}^2(\frac{2\pi nk}{N}) \\ &amp;= \sum_{n=0}^{N-1} \sigma^2 {\cos}^2(\frac{2\pi nk}{N}) \\ &amp;= \sigma^2 \sum_{n=0}^{N-1} {\cos}^2(\frac{2\pi nk}{N}) \\ &amp;= \sigma^2 \sum_{n=0}^{N-1} \frac{1 + \cos(\frac{4\pi nk}{N})}{2} \\ &amp;= \sigma^2 \left(\sum_{n=0}^{N-1} \frac{1}{2} + \sum_{n=0}^{N-1}\frac{\cos(\frac{4\pi nk}{N})}{2}\right) \\ &amp;= \sigma^2 \left(\frac{N}{2} + \frac{1}{2}\sum_{n=0}^{N-1}cos(\frac{4\pi nk}{N})\right)\end{aligned}$$</p>
+
+<p>Now, we look at the summation of cosine terms that stops us from simplyfing the above equation further. It is a summation of the terms as shown below:</p>
+
+<p>$$\begin{aligned}S &amp;= \sum_{x = 1}^{N} cos(kx) \\ &amp;= 1 + cos(k) + … + cos((N-1)k)\end{aligned}$$</p>
+
+<p>Multiplying both sides by $\sin (\frac{k}{2})$ is:</p>
+
+<p>$$\begin{aligned}\sin (\frac{k}{2}) S &amp;= \sum_{x = 1}^{N} \sin (\frac{k}{2}) \cos(kx) \\ &amp;= \sin (\frac{k}{2}) + \sin (\frac{k}{2}) \cos(k) + … + \sin (\frac{k}{2}) \cos((N-1)k)\end{aligned}$$</p>
+
+<p>We apply the identity below to cancel out the summation terms:</p>
+
+<p>$$\sin (a) \cos (b) = \frac{1}{2} \left(\sin (a + b) + \sin (a - b) \right)$$</p>
+
+<p>This simplifies the summation back into the original summation and it ends up as:</p>
+
+<p>$$\begin{aligned}\sin (\frac{k}{2}) S &amp;= \sin (\frac{k}{2}) + \frac{1}{2} (\cancel{\sin (\frac{3k}{2})} - \sin(\frac{k}{2})) + \frac{1}{2} (\cancel{\sin (\frac{5k}{2})} - \cancel{\sin(\frac{3k}{2})}) \\ &amp; \qquad + … + \frac{1}{2} (\sin ((N - \frac{1}{2})k) - \cancel{\sin((N - \frac{3}{2})k)}) \\ &amp;= \frac{1}{2} \left(\sin ((N - \frac{1}{2})k) + \sin(\frac{k}{2})\right) \\ &amp;= \sin(\frac{Nk}{2}) \cos(\frac{(N-1)k}{2}) \\ &amp;= \sin(2\pi k) \cos(\frac{2(N-1)\pi k}{N}) \\ &amp;= 0\end{aligned}$$</p>
+
+<p>The above term equates to zero because $\sin$ terms always goes to zero because any integer multiple of $2\pi$ is zero. Seems like a long walk to nothing but it makes our life much easier.</p>
+
+<h1 id="probability-distribution-of-real-and-imaginary-parts">Probability Distribution of Real and Imaginary Parts</h1>
+
+<p>From the above we can say that for the real part of the FFT of Random Noise $n[m]$ with 0 mean and $\sigma^2$ variance, the probability distribution is:</p>
+
+<p>$$\begin{aligned}E[\mathscr{R}(N[k])] &amp;= 0 \\ E[(\mathscr{R}(N[k]))^2] &amp;= \frac{N\sigma^2}{2}\end{aligned}$$</p>
+
+<p>I expect that the same result can be expanded for the imaginary part of the FFT output. I leave the derivation to the reader.</p>
+
+<h1 id="probability-distribution-of-the-amplitude">Probability Distribution of the Amplitude</h1>
+
+<p>To find the probability distribution of the amplitude, we first consider the Cummulative Distribution Function (CDF) of the variable:</p>
+
+<p>$$\begin{aligned}P_A(a) &amp;= P(a &lt; \alpha) \\ &amp;= P(\sqrt{x_r^2 + x_i^2} &lt; \alpha) \\ &amp;= \underset{\sqrt{x_r^2 + x_i^2} &lt; \alpha}{\iint} f(x_r, x_i) dx_r dx_i\end{aligned}$$</p>
+
+<p>From the above sections, we see that the real and imaginary part of the FFT are indenpendent. There, the joint probability distribution of $x_r$ and $x_i$ is the product of the two.</p>
+
+<p>$$\begin{aligned}P_A(a) &amp;= \underset{\sqrt{x_r^2 + x_i^2} &lt; a}{\iint} f(x_r) f(x_i) dx_r dx_i \\ &amp;= \underset{\sqrt{x_r^2 + x_i^2} &lt; a}{\iint} \frac{1}{\sqrt{2\pi\sigma_n^2}} exp(\frac{-x_r^2}{2\sigma_n^2}) \; \frac{1}{\sqrt{2\pi\sigma^2}} exp(\frac{-x_i^2}{2\sigma_n^2}) dx_r dx_i \\ &amp;= \underset{\sqrt{x_r^2 + x_i^2} &lt; a}{\iint} \frac{1}{2\pi\sigma_n^2} exp(\frac{-(x_r^2 + x_i^2)}{2\sigma_n^2}) dx_r dx_i\end{aligned}$$</p>
+
+<p>Note that I have replaced $N\sigma^2 / 2$ with $\sigma_n^2$. To solve this integral, we will have to substitute $x_r = \alpha \cos{\theta}$ and $x_i = \alpha \sin{\theta}$. Therefore we now know that the limits are $\alpha &lt; a$. To replace $dx_rdx_i$ though, we need to find the Jacobian Determinant.</p>
+
+<p>$$\begin{aligned}dx_rdx_i &amp;= |{J_{x_r, x_i}(\alpha, \theta)}| \; d\alpha \; d\theta \\ &amp;= \left|\begin{bmatrix} \frac{\partial x_r}{\partial \alpha} &amp; \frac{\partial x_r}{\partial \theta} \\ \frac{\partial x_i}{\partial \alpha} &amp; \frac{\partial x_i}{\partial \theta} \end{bmatrix}\right| \; d\alpha \; d\theta \\ &amp;= \left|\begin{bmatrix} \cos{\theta} &amp; -\alpha \sin{\theta} \\ \sin{\theta} &amp; \alpha \cos{\theta} \end{bmatrix}\right| \; d\alpha \; d\theta \\ &amp;= \alpha \; d\alpha \; d\theta\end{aligned}$$</p>
+
+<p>Therefore the integral now becomes the following. Note that for the distribution of $A$ we allow $\theta$ across its entire range. The value of $a$ also has to remain positive, therefore, the lower limit is changed from $- \infty$ to $0$.</p>
+
+<p>$$\begin{equation}P_A(a) = \int_0^{2\pi} \int_0^a \frac{1}{2\pi\sigma_n^2} exp(\frac{-\alpha^2}{2\sigma_n^2}) \alpha \; d\alpha \; d\theta\end{equation}$$</p>
+
+<p>I leave the simplification of this to the reader but this results in the following distribution:</p>
+
+<p>$$\begin{equation}P_A(a) = 1 - exp(\frac{-a^2}{2\sigma_n^2}) \end{equation}$$</p>
+
+<p>This makes the Probability Distribution Function (PDF) of $A$ to be:</p>
+
+<p>$$\begin{aligned} p_A(a) &amp;= \frac{\partial P_A(a)}{\partial a} \\ &amp;= \frac{a}{\sigma_n^2} exp(\frac{-a^2}{2\sigma_n^2})\end{aligned}$$</p>
+
+<p>This is a well know distribution called the <a href="https://en.wikipedia.org/wiki/Rayleigh_distribution">Rayleigh Distribution</a>.</p>
+
+<h1 id="probability-distribution-of-the-phase">Probability Distribution of the Phase</h1>
+
+<p>The similar derivation for the phase can be done and shows that the Cummulative Distribution Function (CDF) is:</p>
+
+<p>$$\begin{equation}P_\Phi(\phi) = \frac{\phi}{2\pi}\end{equation}$$</p>
+
+<p>which makes the Probability Distribution Function (PDF):</p>
+
+<p>$$\begin{equation}p_\Phi(\phi) = \frac{1}{2\pi}\end{equation}$$</p>
+
+<p>This means that the phase is uniformly distributed across the the interval $(0, 2\pi)$.</p>
+
+
+    </main><footer>
+  <div id="navigation">
+  <a href="https://t.me/KaranJayachandra">Message</a> <a href="mailto:mail@karanjayachandra.com">Email</a> <a href="https://www.linkedin.com/in/karanjayachandra/">LinkedIn</a> <a href="https://github.com/KaranJayachandra">GitHub</a>
+  </div>
+</footer>
+</div>
+  </body>
+</html>

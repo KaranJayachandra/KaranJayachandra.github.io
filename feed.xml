@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://www.karanjayachandra.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.karanjayachandra.com/" rel="alternate" type="text/html" /><updated>2023-06-24T16:41:56+00:00</updated><id>https://www.karanjayachandra.com/feed.xml</id><title type="html">Karan Jayachandra</title><subtitle>Karan's Website</subtitle><entry><title type="html">Fourier Transform of White Noise</title><link href="https://www.karanjayachandra.com/signalprocessing/2022/07/25/fourier-noise.html" rel="alternate" type="text/html" title="Fourier Transform of White Noise" /><published>2022-07-25T13:39:00+00:00</published><updated>2022-07-25T13:39:00+00:00</updated><id>https://www.karanjayachandra.com/signalprocessing/2022/07/25/fourier-noise</id><content type="html" xml:base="https://www.karanjayachandra.com/signalprocessing/2022/07/25/fourier-noise.html">&lt;p&gt;SOURCES: &lt;a href=&quot;https://dsp.stackexchange.com/questions/8418/what-is-the-phase-and-magnitude-response-of-white-noise&quot;&gt;DSP Stack Exchange&lt;/a&gt; &lt;a href=&quot;https://blog.myrank.co.in/sum-of-sines-or-cosines-of-n-angles-in-a-p/&quot;&gt;My Rank&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=p_7IL-Cb4m0&quot;&gt;Prof. Unnikrishna Pillai&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=NDVQ2ttIrAQ&quot;&gt;Iqbal Shahid&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Gist:&lt;/strong&gt; If you interested in understanding what happens to a Normal Random Variable after applyting a Fourier Transform to it, read on!&lt;/p&gt;
+
+&lt;h1 id=&quot;the-fourier-tranform&quot;&gt;The Fourier Tranform&lt;/h1&gt;
+&lt;p&gt;The &lt;a href=&quot;https://www.karanjayachandra.com/signalprocessing/2021/10/02/fourier-transform.html&quot;&gt;Fourier Transform&lt;/a&gt; represents a signal in the frequency domain. There are multiple methods of performing this operation but the most commonly used one is the Discrete Fourier Transform. It adapts the Fourier Transform to time limited signals. Mathematically the operation is described as shown below:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned} S[k] &amp;amp;= \sum_{n=0}^{N-1} s[n] e^{\frac{-j2\pi nk}{N}} \\ &amp;amp;= \sum_{n=0}^{N-1} s[n]cos(\frac{2\pi nk}{N}) - j \sum_{n=0}^{N-1} s[n]sin(\frac{2\pi nk}{N})\end{aligned}$$&lt;/p&gt;
+
+&lt;h1 id=&quot;the-random-signal&quot;&gt;The Random Signal&lt;/h1&gt;
+&lt;p&gt;If the samples of $n[m]$ are normal disbributed with mean equal to 0 and variance equal to $\sigma^2$ which is the case for random noise, we would like to understand what happens to the distribution of $N[k]$. Mathematical this means that:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned} E[n[m]] &amp;amp;= 0 \\ E[(n[m])^2] &amp;amp;= \sigma^2\end{aligned}$$&lt;/p&gt;
+
+&lt;h1 id=&quot;the-mean&quot;&gt;The Mean&lt;/h1&gt;
+&lt;p&gt;If look at the expected value of the complex value $N[k]$ is defined below, which would be the mean of the samples in the frequency domain:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}E[S[k]] &amp;amp;= E[\mathscr{R}(S[k])] + jE[\mathscr{I}(S[k])] \\ &amp;amp;= \sum_{n=0}^{N-1} E[s[n]\cos(\frac{2\pi nk}{N})] - j \sum_{n=0}^{N-1} E[s[n]\sin(\frac{2\pi nk}{N})] \\ &amp;amp;=\sum_{n=0}^{N-1} E[s[n]]\cos(\frac{2\pi nk}{N}) - j \sum_{n=0}^{N-1} E[s[n]]\sin(\frac{2\pi nk}{N}) \\ &amp;amp;=\sum_{n=0}^{N-1} 0 \; \cos(\frac{2\pi nk}{N}) - j \sum_{n=0}^{N-1} 0 \; \sin(\frac{2\pi nk}{N}) \\ &amp;amp;= 0\end{aligned}$$&lt;/p&gt;
+
+&lt;h1 id=&quot;the-variance&quot;&gt;The Variance&lt;/h1&gt;
+&lt;p&gt;The variances of the Fourier Tranform would be the expected value of the $N[k]^2$. It is calculated in the same way, therefore, let’s concentrate on the real part for now:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}E[\mathscr{R}(N[k])^2)] &amp;amp;= E[\mathscr{R}(N[k]) . \mathscr{R}(N[m])] \\ &amp;amp;= E[\sum_{n=0}^{N-1} s[n]cos(\frac{2\pi nk}{N}) . \sum_{p=0}^{N-1} s[p]cos(\frac{2\pi pk}{N})]\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;To simplify this, we use some mathematical tricks to collapse the two summations into one. This enables us to move the expected value operation into the summation operation.&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}E[\mathscr{R}(N[k])^2)] &amp;amp;= E[\sum_{n=0}^{N-1} s[n]cos(\frac{2\pi nk}{N}) . \sum_{p=0}^{N-1} s[p]cos(\frac{2\pi pk}{N})] \\ &amp;amp;= \sum_{n=0}^{N-1} \sum_{p=0}^{N-1} s[n] s[p] \delta(n - p) cos(\frac{2\pi nk}{N}) cos(\frac{2\pi pk}{N})\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;Now the summations can be collapsed because the limits are the same and the variables are the same as well. Most importantly, when $n \neq p$ the summation goes to zero.&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}E[\mathscr{R}(N[k])^2)] &amp;amp;= E[\sum_{n=0}^{N-1} s[n]^2 {cos}^2(\frac{2\pi nk}{N})] \\ &amp;amp;= \sum_{n=0}^{N-1} E[s[n]^2] {\cos}^2(\frac{2\pi nk}{N}) \\ &amp;amp;= \sum_{n=0}^{N-1} \sigma^2 {\cos}^2(\frac{2\pi nk}{N}) \\ &amp;amp;= \sigma^2 \sum_{n=0}^{N-1} {\cos}^2(\frac{2\pi nk}{N}) \\ &amp;amp;= \sigma^2 \sum_{n=0}^{N-1} \frac{1 + \cos(\frac{4\pi nk}{N})}{2} \\ &amp;amp;= \sigma^2 \left(\sum_{n=0}^{N-1} \frac{1}{2} + \sum_{n=0}^{N-1}\frac{\cos(\frac{4\pi nk}{N})}{2}\right) \\ &amp;amp;= \sigma^2 \left(\frac{N}{2} + \frac{1}{2}\sum_{n=0}^{N-1}cos(\frac{4\pi nk}{N})\right)\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;Now, we look at the summation of cosine terms that stops us from simplyfing the above equation further. It is a summation of the terms as shown below:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}S &amp;amp;= \sum_{x = 1}^{N} cos(kx) \\ &amp;amp;= 1 + cos(k) + … + cos((N-1)k)\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;Multiplying both sides by $\sin (\frac{k}{2})$ is:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}\sin (\frac{k}{2}) S &amp;amp;= \sum_{x = 1}^{N} \sin (\frac{k}{2}) \cos(kx) \\ &amp;amp;= \sin (\frac{k}{2}) + \sin (\frac{k}{2}) \cos(k) + … + \sin (\frac{k}{2}) \cos((N-1)k)\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;We apply the identity below to cancel out the summation terms:&lt;/p&gt;
+
+&lt;p&gt;$$\sin (a) \cos (b) = \frac{1}{2} \left(\sin (a + b) + \sin (a - b) \right)$$&lt;/p&gt;
+
+&lt;p&gt;This simplifies the summation back into the original summation and it ends up as:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}\sin (\frac{k}{2}) S &amp;amp;= \sin (\frac{k}{2}) + \frac{1}{2} (\cancel{\sin (\frac{3k}{2})} - \sin(\frac{k}{2})) + \frac{1}{2} (\cancel{\sin (\frac{5k}{2})} - \cancel{\sin(\frac{3k}{2})}) \\ &amp;amp; \qquad + … + \frac{1}{2} (\sin ((N - \frac{1}{2})k) - \cancel{\sin((N - \frac{3}{2})k)}) \\ &amp;amp;= \frac{1}{2} \left(\sin ((N - \frac{1}{2})k) + \sin(\frac{k}{2})\right) \\ &amp;amp;= \sin(\frac{Nk}{2}) \cos(\frac{(N-1)k}{2}) \\ &amp;amp;= \sin(2\pi k) \cos(\frac{2(N-1)\pi k}{N}) \\ &amp;amp;= 0\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;The above term equates to zero because $\sin$ terms always goes to zero because any integer multiple of $2\pi$ is zero. Seems like a long walk to nothing but it makes our life much easier.&lt;/p&gt;
+
+&lt;h1 id=&quot;probability-distribution-of-real-and-imaginary-parts&quot;&gt;Probability Distribution of Real and Imaginary Parts&lt;/h1&gt;
+
+&lt;p&gt;From the above we can say that for the real part of the FFT of Random Noise $n[m]$ with 0 mean and $\sigma^2$ variance, the probability distribution is:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}E[\mathscr{R}(N[k])] &amp;amp;= 0 \\ E[(\mathscr{R}(N[k]))^2] &amp;amp;= \frac{N\sigma^2}{2}\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;I expect that the same result can be expanded for the imaginary part of the FFT output. I leave the derivation to the reader.&lt;/p&gt;
+
+&lt;h1 id=&quot;probability-distribution-of-the-amplitude&quot;&gt;Probability Distribution of the Amplitude&lt;/h1&gt;
+
+&lt;p&gt;To find the probability distribution of the amplitude, we first consider the Cummulative Distribution Function (CDF) of the variable:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}P_A(a) &amp;amp;= P(a &amp;lt; \alpha) \\ &amp;amp;= P(\sqrt{x_r^2 + x_i^2} &amp;lt; \alpha) \\ &amp;amp;= \underset{\sqrt{x_r^2 + x_i^2} &amp;lt; \alpha}{\iint} f(x_r, x_i) dx_r dx_i\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;From the above sections, we see that the real and imaginary part of the FFT are indenpendent. There, the joint probability distribution of $x_r$ and $x_i$ is the product of the two.&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}P_A(a) &amp;amp;= \underset{\sqrt{x_r^2 + x_i^2} &amp;lt; a}{\iint} f(x_r) f(x_i) dx_r dx_i \\ &amp;amp;= \underset{\sqrt{x_r^2 + x_i^2} &amp;lt; a}{\iint} \frac{1}{\sqrt{2\pi\sigma_n^2}} exp(\frac{-x_r^2}{2\sigma_n^2}) \; \frac{1}{\sqrt{2\pi\sigma^2}} exp(\frac{-x_i^2}{2\sigma_n^2}) dx_r dx_i \\ &amp;amp;= \underset{\sqrt{x_r^2 + x_i^2} &amp;lt; a}{\iint} \frac{1}{2\pi\sigma_n^2} exp(\frac{-(x_r^2 + x_i^2)}{2\sigma_n^2}) dx_r dx_i\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;Note that I have replaced $N\sigma^2 / 2$ with $\sigma_n^2$. To solve this integral, we will have to substitute $x_r = \alpha \cos{\theta}$ and $x_i = \alpha \sin{\theta}$. Therefore we now know that the limits are $\alpha &amp;lt; a$. To replace $dx_rdx_i$ though, we need to find the Jacobian Determinant.&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned}dx_rdx_i &amp;amp;= |{J_{x_r, x_i}(\alpha, \theta)}| \; d\alpha \; d\theta \\ &amp;amp;= \left|\begin{bmatrix} \frac{\partial x_r}{\partial \alpha} &amp;amp; \frac{\partial x_r}{\partial \theta} \\ \frac{\partial x_i}{\partial \alpha} &amp;amp; \frac{\partial x_i}{\partial \theta} \end{bmatrix}\right| \; d\alpha \; d\theta \\ &amp;amp;= \left|\begin{bmatrix} \cos{\theta} &amp;amp; -\alpha \sin{\theta} \\ \sin{\theta} &amp;amp; \alpha \cos{\theta} \end{bmatrix}\right| \; d\alpha \; d\theta \\ &amp;amp;= \alpha \; d\alpha \; d\theta\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;Therefore the integral now becomes the following. Note that for the distribution of $A$ we allow $\theta$ across its entire range. The value of $a$ also has to remain positive, therefore, the lower limit is changed from $- \infty$ to $0$.&lt;/p&gt;
+
+&lt;p&gt;$$\begin{equation}P_A(a) = \int_0^{2\pi} \int_0^a \frac{1}{2\pi\sigma_n^2} exp(\frac{-\alpha^2}{2\sigma_n^2}) \alpha \; d\alpha \; d\theta\end{equation}$$&lt;/p&gt;
+
+&lt;p&gt;I leave the simplification of this to the reader but this results in the following distribution:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{equation}P_A(a) = 1 - exp(\frac{-a^2}{2\sigma_n^2}) \end{equation}$$&lt;/p&gt;
+
+&lt;p&gt;This makes the Probability Distribution Function (PDF) of $A$ to be:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{aligned} p_A(a) &amp;amp;= \frac{\partial P_A(a)}{\partial a} \\ &amp;amp;= \frac{a}{\sigma_n^2} exp(\frac{-a^2}{2\sigma_n^2})\end{aligned}$$&lt;/p&gt;
+
+&lt;p&gt;This is a well know distribution called the &lt;a href=&quot;https://en.wikipedia.org/wiki/Rayleigh_distribution&quot;&gt;Rayleigh Distribution&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;probability-distribution-of-the-phase&quot;&gt;Probability Distribution of the Phase&lt;/h1&gt;
+
+&lt;p&gt;The similar derivation for the phase can be done and shows that the Cummulative Distribution Function (CDF) is:&lt;/p&gt;
+
+&lt;p&gt;$$\begin{equation}P_\Phi(\phi) = \frac{\phi}{2\pi}\end{equation}$$&lt;/p&gt;
+
+&lt;p&gt;which makes the Probability Distribution Function (PDF):&lt;/p&gt;
+
+&lt;p&gt;$$\begin{equation}p_\Phi(\phi) = \frac{1}{2\pi}\end{equation}$$&lt;/p&gt;
+
+&lt;p&gt;This means that the phase is uniformly distributed across the the interval $(0, 2\pi)$.&lt;/p&gt;</content><author><name></name></author><category term="signalprocessing" /><summary type="html">SOURCES: DSP Stack Exchange My Rank Prof. Unnikrishna Pillai Iqbal Shahid</summary></entry><entry><title type="html">Assassin’s Creed: Unity</title><link href="https://www.karanjayachandra.com/gaming/review/2021/11/06/ac-unity.html" rel="alternate" type="text/html" title="Assassin’s Creed: Unity" /><published>2021-11-06T05:38:00+00:00</published><updated>2021-11-06T05:38:00+00:00</updated><id>https://www.karanjayachandra.com/gaming/review/2021/11/06/ac-unity</id><content type="html" xml:base="https://www.karanjayachandra.com/gaming/review/2021/11/06/ac-unity.html">&lt;p&gt;Rating: ⭐⭐⭐&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Gist:&lt;/strong&gt; The location is breathtaking. Everything else falls short because of repetitive events and shallow storylines. THe game itself could have been extremely entertaining if the main campaign was well written. Would have given it two stars if not for the location.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-good&quot;&gt;The Good&lt;/h1&gt;
+
+&lt;p&gt;The setting of Unity is it’s strongest suit. Paris is bustling with activity during the French Revolution, the landmarks are exceptionally modelled. It however seems like the original plan was to allow for the campaign to run across multitple timelines such as the second world war and medieval Paris before deciding that it was too ambitious. The multiplayer aspect of it was quite fascinating, however I played the multi-player missions offline. I prefer single player games because of the control it gives me on my playtime.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-bad&quot;&gt;The Bad&lt;/h1&gt;
+
+&lt;p&gt;Everything in the storyline falls short from previous editions of the game. Characters like Edward and Shay were relatable and real. Although the story captured my attention in the beginning with it’s connection to Shay’s activities, it soon fell short. The Assassin Order is quite forgettable as well. Although the map is littered with activities, they are quite boring and repetitive. It seems a few of them have been designed just to allow the player to get rewards.&lt;/p&gt;</content><author><name></name></author><category term="gaming" /><category term="review" /><summary type="html">Rating: ⭐⭐⭐</summary></entry><entry><title type="html">Minimum Redundancy Linear Array</title><link href="https://www.karanjayachandra.com/antennas/2021/11/02/ml-array.html" rel="alternate" type="text/html" title="Minimum Redundancy Linear Array" /><published>2021-11-02T12:03:00+00:00</published><updated>2021-11-02T12:03:00+00:00</updated><id>https://www.karanjayachandra.com/antennas/2021/11/02/ml-array</id><content type="html" xml:base="https://www.karanjayachandra.com/antennas/2021/11/02/ml-array.html">&lt;p&gt;It is assumed that the reader understands how a linear antenna array works. With this in mind, we explore the concept of the minimum redundancy linear array. The motivation to create such an array is to provide the maximum resolution for a given number of elements in the array. This is done by reducing the number of redundant spacings in the antenna array. The antenna array factor is calculated using the following formula.&lt;/p&gt;
+
+&lt;p&gt;$$ AF(\theta) = \sum_{i=1}^N e^{j\pi d_icos(\theta)} $$&lt;/p&gt;
+
+&lt;p&gt;Using this formula and the spacing calculations specified in the literature, we can compare the two arrays. The first is the uniform linear array with equal spacing of half wavelength. The second is the spacing based on the MLA calculations multiplies by half wavelengths. From this it is clear that although we main lobe width is lower, the power is distributed into the side lobes. The power HAS to go somewhere. This will also require a more complicated feeding network because of the non-uniform distance which can be done with clever design or phase shifters.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.karanjayachandra.com/assets/images/ml_array.png&quot; alt=&quot;Minimum Redundancy Linear Array&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can have a look at the python code used to generate the graph above &lt;a href=&quot;https://github.com/MrKaranJ/MrKaranJ.github.io/blob/gh-pages/_code/mla.py&quot;&gt;here&lt;/a&gt;. Read &lt;a href=&quot;https://ieeexplore.ieee.org/document/1139138&quot;&gt;this&lt;/a&gt; article for more information.&lt;/p&gt;</content><author><name></name></author><category term="antennas" /><summary type="html">It is assumed that the reader understands how a linear antenna array works. With this in mind, we explore the concept of the minimum redundancy linear array. The motivation to create such an array is to provide the maximum resolution for a given number of elements in the array. This is done by reducing the number of redundant spacings in the antenna array. The antenna array factor is calculated using the following formula.</summary></entry><entry><title type="html">Anne Wilkes and The Capital Punishment</title><link href="https://www.karanjayachandra.com/ethics/2021/10/26/capital-punishment.html" rel="alternate" type="text/html" title="Anne Wilkes and The Capital Punishment" /><published>2021-10-26T06:29:00+00:00</published><updated>2021-10-26T06:29:00+00:00</updated><id>https://www.karanjayachandra.com/ethics/2021/10/26/capital-punishment</id><content type="html" xml:base="https://www.karanjayachandra.com/ethics/2021/10/26/capital-punishment.html">&lt;p&gt;This post is a review mixed with a dilemma that I have been facing concerning the Capital Punishment. It has always surprised me to see people who were so sure about the positions that they hold on any matter. I for one am not entirely sure about anything. My positions are always held with a certain degree of confidence. Some more than the other.&lt;/p&gt;
+
+&lt;p&gt;I recently read the book, &lt;a href=&quot;https://en.wikipedia.org/wiki/Misery_%28novel%29&quot;&gt;Misery&lt;/a&gt; by Stephen King. &lt;strong&gt;Spoilers Ahead&lt;/strong&gt; In the book, Anne Wilkes the antagonist puts the Paul Sheldon her favourite writer through horrific conditions. These include making him drink wash water, burning his manuscript and most diguistingly chopping off his foot and thumb. I could not but read with anger to the end where I desperately waited to see her face justice and I must say secretely hoping for a lethal ending. This however, was not in line with my character. Overall the book was very well written and always had me turning my digital pages. The roller coaster that Paul Sheldon goes through nearly kills him and exhausts the reader. I think this is the highest praise you can give the book as it literally make the reader feel as though he is right there with the hero of the story. Although it was a great story I can’t but say that this is just another good book and not a book that defines a stepping stone in literature. Rating: ⭐⭐⭐⭐.&lt;/p&gt;
+
+&lt;p&gt;I had always considered human life to be sovergien and no second person can endevour to take it from them. This was despite the fact that heinous crimes are commited everyday. I never understood how anyone including “judges” and juries could pass “judgement” on a fellow human condemning them to death. No matter the crime, it makes very little sense how anyone can claim that they have a right to take another life. This is also accompanied by the fact that most of such cases involve people who are not of sound mind. However, does this excuse such behavior? I believed that the worst punishment that anyone could impose on the other was to exclude them for society. This is however an idealistic goal because we share the earth. My ramblings can go on and on but I always held fast to the idea that no man can or should be able to decide another’s fate when morality itself is a social construct. Things that were legal or illegal in the past might not be in the future.&lt;/p&gt;
+
+&lt;p&gt;While reading the book though, a thought came to me, do people who skirt the law deserve to be protected by it. This started a train of thought that made me question whether my own argument was flawed. The law is constructed based on the mutual agreement amongst people about social behaviour. To make it clear, my definition of crime is an action that takes away the sovergnity of another person. This made me realize that you are protected by the law only as long as you yourself come into an agreement to follow its tenets. But if you decide to disagree and commit a crime, do you deserve to be protected by the same law? For example, once a man has killed another person, if a retaliatiry move is made against him. Should the law hold the second person accountable. This would lead to a world where an eye for an eye is the mantra. There could also be cases where wrongful killing can take place. Therefore, the law intervenes and takes the burden upon itself to determine the next course of action. I can’t see the immorality in that.&lt;/p&gt;
+
+&lt;p&gt;In reality, I still believe that the Capital Punishment is not the right way to go about it. This is because we live in a messy and non-ideal world. The evidence and the process are not ideal and therefore cannot be considered to be perfect. However, in cases where it is proven without doubt via non-human (ripe with errors) methods, I might consider that the law has the right to choose. I am however always willing to change my mind if other evidence presents itself. So please do contact me via the links below if there are lapses in the way I am thinking of if you yourself have a different but constructive point of view and argument.&lt;/p&gt;</content><author><name></name></author><category term="ethics" /><summary type="html">This post is a review mixed with a dilemma that I have been facing concerning the Capital Punishment. It has always surprised me to see people who were so sure about the positions that they hold on any matter. I for one am not entirely sure about anything. My positions are always held with a certain degree of confidence. Some more than the other.</summary></entry><entry><title type="html">Dune</title><link href="https://www.karanjayachandra.com/movies/2021/10/22/dune-2021.html" rel="alternate" type="text/html" title="Dune" /><published>2021-10-22T09:40:00+00:00</published><updated>2021-10-22T09:40:00+00:00</updated><id>https://www.karanjayachandra.com/movies/2021/10/22/dune-2021</id><content type="html" xml:base="https://www.karanjayachandra.com/movies/2021/10/22/dune-2021.html">&lt;p&gt;&lt;strong&gt;NOTE: This review contains spoliers to the movie.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Rating: ⭐⭐⭐&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Gist:&lt;/strong&gt; Most shots in the movies are spectacular and the story keeps you interested. Few scenes needed better audio mixing with the dialogue being inaudible and the cast performance is laudible. However, the story teeters on the edge of making you lose interest because of the slow pace.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-good&quot;&gt;The Good&lt;/h1&gt;
+
+&lt;p&gt;The movies has definetely left me anticipiating the next release of the Dune saga. I might just read the book instead of wait! The scenes in the movies are well though out. The cinematography by &lt;a href=&quot;https://en.wikipedia.org/wiki/Greig_Fraser&quot;&gt;Greig Fraser&lt;/a&gt; is on point with the scenes from Caladan, Arrakis and other planets looking magnificent. The ambience set up by the music was great and kept me at the edge of my seat. It potrayed the sense of danger that always surrounded House Atreides.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-bad&quot;&gt;The Bad&lt;/h1&gt;
+
+&lt;p&gt;The run time of the movie could have been cut down to two hours while maintaining the same amount of story. The storyline ends up just introducing few of the factions in Dune universe, House Atreides taking and losing control of Arrakis and Paul Atreides meeting the Fremen. The plot doesn’t move as fast as it could and it seems that pacing was sacrificed to use the amazing B roll that was created. Most characters were forgettable including Duncan played by Jason Momoa because of the lack of screen time. The only notable cast in the movie were Leto and Paul Atreides, Vladimir Harkonnen and Head of the Bene Gesserit.&lt;/p&gt;</content><author><name></name></author><category term="movies" /><summary type="html">NOTE: This review contains spoliers to the movie.</summary></entry><entry><title type="html">Poems From The Past</title><link href="https://www.karanjayachandra.com/poem/2021/10/16/poems-past.html" rel="alternate" type="text/html" title="Poems From The Past" /><published>2021-10-16T14:57:00+00:00</published><updated>2021-10-16T14:57:00+00:00</updated><id>https://www.karanjayachandra.com/poem/2021/10/16/poems-past</id><content type="html" xml:base="https://www.karanjayachandra.com/poem/2021/10/16/poems-past.html">&lt;p&gt;These were poems that I wrote at the start of my Bachelor’s studies. Please bear with them because I am sure they aren’t good. However I did want to add them here for future reference. I can then look back and laugh at how bad the writing was.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Engineer&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I just opened my eyes,
+but the teacher is still in class.
+He is really such a bore,
+but he just doesn’t know that, alas.&lt;/p&gt;
+
+&lt;p&gt;Everyone is acting it out,
+they are now experts at faking rapport.
+No point in listening now,
+that ship has already sailed from the port.&lt;/p&gt;
+
+&lt;p&gt;Why don’t they get it 
+Can’t teach one who has no interest.
+I am forced to be here,
+This is really the worst, I don’t jest.&lt;/p&gt;
+
+&lt;p&gt;I could be elsewhere,
+doing something with my time,
+but here i sit and cry,
+nothing else but to write this rhyme.&lt;/p&gt;
+
+&lt;p&gt;Attendance is a sin,
+It’s like i am paying to be jailed.
+In India, Education is a business,
+No one has the interest, I assayed.&lt;/p&gt;
+
+&lt;p&gt;Become an engineer,
+then become what you want.
+This is the mindset,
+rebel and say you just can’t.&lt;/p&gt;
+
+&lt;p&gt;A Nation of graduates,
+yet we still have nothing to show,
+be what you want to be,
+only then talent in gush will flow.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Future&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;At times I sit and wonder,
+what awaits us I ponder.
+Then I am suddenly brought,
+to present where forever I am caught,
+the future, we can’t control,
+take life through it’s treacherous shoal.
+In thoughts of future unknown,
+we can be happy or cry and moan,
+but none of that really matters,
+as any future good or bad,
+like glass can at any time shatter.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nostalgia&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Long gone are days of childhood past,
+Never knew years flew by this fast.
+It happened in the blink of an eye,
+the game has begun, I have cast my die.
+Nostalgia, the feeling makes me think,
+of years that have suddenly begun to shrink.
+I have lived he best years of my life,
+have had all kinds of experiences in rife.
+If I were given a chance to relive those days,
+I wouldn’t change a thing, whatever anyone says.
+I have never known a worry till now,
+I think it’s because of my parents to whom I bow.
+My family can be quirky at times,
+but the love they give me, can’t be put in rhymes.
+The friends I have are the best I could as for,
+I’ve had many since a time long before.
+I hope I’ve been as good to them as they’ve been to me
+they are the best, if you meet them you’ll see.
+I hope everyone is as lucky as I have been,
+So take of the blindfolds and look at the world that is yet to be seen.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Road You Take&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Sometimes I wonder about what I am here for,
+and when I am long gone will people sing my lore.
+What is life and how do you climb the summit of this tor ?
+or will I be another story that will just be a bore.&lt;/p&gt;
+
+&lt;p&gt;Should I aspire to be someone whose exploits are well known,
+whose stories give inspiration to millions and many more ?
+Or should I be the person whose achievements are his own,
+another grain in the sand on the beautiful golden sea shore.&lt;/p&gt;
+
+&lt;p&gt;Aurelius rightly said, “One should have a good life”,
+become immortal through the ideals and memories you leave behind.
+Live a life with friends and family and have joy in rife,
+your thoughts and actions stay on, thought you turn to grind.&lt;/p&gt;
+
+&lt;p&gt;But there are those who want to be well known even in stranger’s eyes,
+those who want to change the course of history through words and act,
+these men desire power and money, and these things are surely nice,
+I understand how they feel and surely what they are getting at.&lt;/p&gt;
+
+&lt;p&gt;I am half way down the middle among the two paths I talked about,
+I keep dreaming, that there must be some kind of middle ground.
+What if I can have privacy of home and also be an icon standing stout ?
+this is just a fantasy and for proof you just have to look around.&lt;/p&gt;
+
+&lt;p&gt;This choice is one that everybody has to make and before it’s too late,
+else they might end up with nothing, even with potential great/
+Carefully weigh the options and decide and stick with the road you take,
+and hopefully this poem will act as a beacon for the decision you have to make.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The System&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The whole education system is messed up,
+I have no idea how much water is in my cup.
+Am I the only one who wants to change this ?
+It’s like these hacks are aiming to miss.
+I know it is a difficult task at hand,
+but someone somewhere must make a stand.
+Rote learning is worshiped in today’s class.
+Wait, is this class, or some Sunday mass.
+Science is the epitome of reason and thinking,
+religious fools know not what they are sinking.
+An enemy of logic is the enemy of mankind.
+And come what may, I will speak my mind.
+They interfere in matters they know nothing about,
+they are on the loosing side, they are soon to find out.
+Start thinking about this before it’s too late,
+we are not going anywhere at this lousy rate.
+But before that we must admit that we have a problem,
+without which how can we all sit down and solve them.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Winner&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I see a lot of grief and sorrow,
+but I still hope for a better tomorrow.
+Hope helps a man of the world bear,
+Woes and troubles amidst all despair.&lt;/p&gt;
+
+&lt;p&gt;Some see darkness through all the light,
+others see light thought the darkness, bright.
+People have gone through hardships in rife,
+they never complain, because that’s just life.&lt;/p&gt;
+
+&lt;p&gt;These are the people who persevere and fight,
+and also always keep their goal in sight.
+This is why they are rewarded at the end,
+but others think their success is godsend.&lt;/p&gt;
+
+&lt;p&gt;But in truth god had nothing do with it,
+it was just one man working bit by bit.
+No one knows all the failed attempts made,
+he broke the constructs, others just obeyed.
+Someone said, “Only failure is not to try”,
+Never gave up, he would rather just die.&lt;/p&gt;</content><author><name></name></author><category term="poem" /><summary type="html">These were poems that I wrote at the start of my Bachelor’s studies. Please bear with them because I am sure they aren’t good. However I did want to add them here for future reference. I can then look back and laugh at how bad the writing was.</summary></entry><entry><title type="html">Witcher 3</title><link href="https://www.karanjayachandra.com/gaming/review/2021/10/12/witcher-3.html" rel="alternate" type="text/html" title="Witcher 3" /><published>2021-10-12T14:53:00+00:00</published><updated>2021-10-12T14:53:00+00:00</updated><id>https://www.karanjayachandra.com/gaming/review/2021/10/12/witcher-3</id><content type="html" xml:base="https://www.karanjayachandra.com/gaming/review/2021/10/12/witcher-3.html">&lt;p&gt;Rating: ⭐⭐⭐⭐⭐&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Gist:&lt;/strong&gt; A truly remarkable game that makes it seem like nothing else can every compare. CD Projekt Red accomplished something amazing here. Everything about the game is near perfect. The only quip I have about it is the amount of smuggler’s caches in Skellige and the merchants always running out of money.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-good&quot;&gt;The Good&lt;/h1&gt;
+
+&lt;p&gt;Having played and enjoyed Witcher 2, I came into the game expecting quite a lot and I was surprised that the game exceeded my lofty expectations. The story is of Geralt of Rivia searching for his foster child Ciri who is being hunted by the Wild Hunt. The main misions were really good with not much fat on it. Every mission felt as if you were pushing the needle towards your end goal. The side missions were not an after thought and had as much detail as the main missions of other games. You could also pit yourself against dangerous monsters via the Witcher contracts. This however did not have as much breadth in the story telling. The formula always remained the same, investigate the attack and kill the monster. In addition to the base game, the two free DLCs were also tremendously fun. I played the base game twice and the DLC content once.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-bad&quot;&gt;The Bad&lt;/h1&gt;
+
+&lt;p&gt;In the skellige isles, exploration by boat does get repetitive. Unless you would like to farm some coin, I don’t see a reason to visit every point of interest in the sea. This was the only part of the game that I skipped. I might get some flak for this, but bear with me, I didn’t play the gwent missions at all. I knew beforehand how addictive it could get, so I purposefully avoided it to make sure I concentrate on the core game. Gwent can quickly take over the main stage if you let it. I also always found it irritating that the merchants ran out of gold quite frequently. But this is nitpicking at its finest.&lt;/p&gt;</content><author><name></name></author><category term="gaming" /><category term="review" /><summary type="html">Rating: ⭐⭐⭐⭐⭐</summary></entry><entry><title type="html">Road Network</title><link href="https://www.karanjayachandra.com/python/2021/10/06/road-network.html" rel="alternate" type="text/html" title="Road Network" /><published>2021-10-06T07:38:00+00:00</published><updated>2021-10-06T07:38:00+00:00</updated><id>https://www.karanjayachandra.com/python/2021/10/06/road-network</id><content type="html" xml:base="https://www.karanjayachandra.com/python/2021/10/06/road-network.html">&lt;p&gt;&lt;strong&gt;The Gist:&lt;/strong&gt; I was inspired to create a poster that was based on a reddit post. I document the process here.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.karanjayachandra.com/assets/images/road_network_low.png&quot; alt=&quot;Road Network&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Some time ago, I came across a &lt;a href=&quot;https://www.reddit.com/r/dataisbeautiful/comments/lnlkp5/mapping_the_main_roads_of_the_world_oc/&quot;&gt;post&lt;/a&gt; on the subreddt r/dataisbeautiful and liked the aesthetics of the visualization. I thought this would make for a very good poster especially if the location meant something to the owner. Therefore, I started digging into how I could make one for myself. Using data sets form governmental agencies seemed too time consuming. However while I was mindlessly searching the internet, I came across the python library called &lt;a href=&quot;https://osmnx.readthedocs.io/en/stable/&quot;&gt;OSMNX&lt;/a&gt; that directly accesses data from OpenStreetMap and can fetch the data without much hassle. However installing this package took me quite sometime to figure out mainly because of dependencies. I am not used to working with such libraries. Luckily this &lt;a href=&quot;https://geoffboeing.com/2016/11/osmnx-python-street-networks/&quot;&gt;blog&lt;/a&gt; post helped me quite a bit.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;osmnx&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ox&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;centerPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;12.964398125325351&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;77.57567696953713&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;place&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph_from_point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;centerPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;network_type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'drive'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot_graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;place&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dpi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;edge_linewidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;bgcolor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'#FFFFFF'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;node_color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'none'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;edge_color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'#FF0000'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;filepath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'roadNetwork.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;With this and very few lines of code, I was able to make my own road network image of my favourite city Bengaluru. The first line imports the library. Based on the &lt;em&gt;centerPoint&lt;/em&gt; and the &lt;em&gt;dist&lt;/em&gt; variable that decides the radius from the center, the roads that allow for driving are fetched. This is then plotted with a specification of color, quality and size. I then used Canva to add the title and frame and voila. Although the original image was of much higher quality, I compressed it before adding it to the blog so that you can have faster loading time. Please note that the code takes some time to run because of the huge amount of data it needs to fetch. I am sure there is a better way to accomplish what I wanted to do. Please do reach out to me using the links in the footer if you have any constructive criticism. Thanks!&lt;/p&gt;</content><author><name></name></author><category term="python" /><summary type="html">The Gist: I was inspired to create a poster that was based on a reddit post. I document the process here.</summary></entry><entry><title type="html">Fourier Transform</title><link href="https://www.karanjayachandra.com/signalprocessing/2021/10/02/fourier-transform.html" rel="alternate" type="text/html" title="Fourier Transform" /><published>2021-10-02T16:42:00+00:00</published><updated>2021-10-02T16:42:00+00:00</updated><id>https://www.karanjayachandra.com/signalprocessing/2021/10/02/fourier-transform</id><content type="html" xml:base="https://www.karanjayachandra.com/signalprocessing/2021/10/02/fourier-transform.html">&lt;p&gt;&lt;strong&gt;The Gist:&lt;/strong&gt; If you would like to solve partial derivates easily or process data in the frequency domain, Fourier Transform is the tool you need. If you interested in reading more, please read more below where I also demonstrate with an example.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-basics&quot;&gt;The Basics&lt;/h1&gt;
+&lt;p&gt;The Fourier Transform represents a sequence of numbers (which I will refer to as a signal henceforth) as a summation of sinusoidal waves. It terms of the mathematics, it finds the right combinations of sine waves that need to be added to create the original signal. A sine wave however has two defining properties, the amplitude and the phase. Therefore, the Fourier transform calculates not only the amplitudes of the individual sine waves that make up the signal but also the phase of the waves. This makes the result of the Fourier transform a complex valued result. The Fourier transform can be calculated with the output containing different number of sine waves. For a more accurate description, in most cases, more sine waves are necessary. In the below diagram, this is demonstrated. The original sequence is a square wave shown in the top graph. This seqeunce is approximated using the different number of sine waves shown in the middle graph. As you can see in the graph on the bottom, the more the number of sine waves, the closer it is to the original sequence.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.karanjayachandra.com/assets/images/fourier_transform.png&quot; alt=&quot;Fourier Transform Graph&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can have a look at the python code used to generate the graph above &lt;a href=&quot;https://github.com/MrKaranJ/MrKaranJ.github.io/blob/gh-pages/_code/fouriertransform.py&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-application&quot;&gt;The Application&lt;/h1&gt;
+&lt;p&gt;Partial Derivatives are much easier to solve in the frequency domain because of certain properties. This means that instead of solving complex integrals and differentials, we can convert the entire equation to the fourier domain, simplify it and then convert it back the original domain. The fourier transform is the basis for any kind of Frequency Analysis. This can help us observe different phenomenon such as the chemical composition of the stars to which frequency channel to use to make sure our home wifi signal has adequate strength.&lt;/p&gt;
+
+&lt;p&gt;Although this was a basic introduction to the Fourier Transform, I will create more articles with the in-depth mathematics in the future. In the mean time you can refer to &lt;a href=&quot;https://www.pearson.com/us/higher-education/product/Proakis-Digital-Signal-Processing-Principles-Algorithms-and-Applications-RENTAL-EDITION-5th-Edition/9780137348244.html&quot;&gt;this&lt;/a&gt; text book if needed.&lt;/p&gt;</content><author><name></name></author><category term="signalprocessing" /><summary type="html">The Gist: If you would like to solve partial derivates easily or process data in the frequency domain, Fourier Transform is the tool you need. If you interested in reading more, please read more below where I also demonstrate with an example.</summary></entry><entry><title type="html">Barcelona: Visit the MESSIah</title><link href="https://www.karanjayachandra.com/travel/2021/09/26/barcelona.html" rel="alternate" type="text/html" title="Barcelona: Visit the MESSIah" /><published>2021-09-26T14:46:00+00:00</published><updated>2021-09-26T14:46:00+00:00</updated><id>https://www.karanjayachandra.com/travel/2021/09/26/barcelona</id><content type="html" xml:base="https://www.karanjayachandra.com/travel/2021/09/26/barcelona.html">&lt;p&gt;&lt;strong&gt;The Gist:&lt;/strong&gt; Barcelona is an amazing city and a must visit in Europe. I thoroughly enjoyed every minute of my trip and will definitely have to go there again. For more details read on below.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-background&quot;&gt;The Background&lt;/h1&gt;
+&lt;p&gt;I am originally from India and pursued an undergraduate degree near my hometown, in Bengaluru. However for the master’s degree, I knew that I wanted to step out of the country for better opportunities. I decided against North America due to ideological differences and Europe seemed a great choice. I knew the moment I decided to emigrate, I had to watch &lt;a href=&quot;https://en.wikipedia.org/wiki/Lionel_Messi&quot;&gt;Messi&lt;/a&gt; play at FC Barcelona. I was awestruck with his game since 2012 and was sure that I could not miss the chance to watch a match at Camp Nou. Even before leaving India I had an eye on visiting Spain to see my footballing idol play. I got this opportunity in February of 2020, right before COVID hit Europe thoroughly and I took it.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-preparation&quot;&gt;The Preparation&lt;/h1&gt;
+&lt;p&gt;I had booked a ticket to the game before finding a flight to Barcelona in early December which made it quite economical. I had also reserved a spot at an AirBNB but had no idea where it was or anything about Barcelona. It was quite a new experience for me to explore cities in Europe. Although I was not new to travel (I had mostly travelled through south India), travelling in Europe was scary because of how expensive it could get. I used to metro to travel around Barcelona on my trip.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-stay&quot;&gt;The Stay&lt;/h1&gt;
+&lt;p&gt;I would definitely recommend visiting Barcelona because of how well designed the city it. It is also littered with the amazing architecture of &lt;a href=&quot;https://en.wikipedia.org/wiki/Antoni_Gaud%C3%AD&quot;&gt;Gaudí&lt;/a&gt;. I was lucky enough to book my stay close to the Sagrada Familia and also it has become the butt of the joke for it completion, it is still a must see. The duality if the two sides of the cathedral is amazing. I visited other works of Gaudi such as Casa Milà and Park Güell which were also very interesting. The highlight of the trip for me though was Camp Nou because of my excitement and I scarcely noticed how ninety minute passed. The match was against Eibar and Messi scored four goals. You can find the highlights here. Coming from the Netherlands, the good food was also very welcome. I enjoyed earning Tortillas de Patatas, &lt;a href=&quot;https://en.wikipedia.org/wiki/Cal%C3%A7ot&quot;&gt;Calcots&lt;/a&gt;, Paella, a green chilly dish whose name I shamefully forgot and Patatas Bravas. I also enjoyed many dishes at La Boqueira, a must visit for the foodie. I could not enjoy tapas due to time constraints but I have promised myself to visit Barcelona again. I definitely missed many more sights because I wanted to enjoy a quiet day in my travels and try to live as a Barcelonian. If you think I should have visited a place that I missed please do reach out to me using the links in the footer.&lt;/p&gt;</content><author><name></name></author><category term="travel" /><summary type="html">The Gist: Barcelona is an amazing city and a must visit in Europe. I thoroughly enjoyed every minute of my trip and will definitely have to go there again. For more details read on below.</summary></entry></feed>

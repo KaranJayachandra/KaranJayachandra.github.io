@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self'; object-src 'self'; child-src 'self'; form-action 'none'; base-uri 'self'" /> -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-XSS-Protection" content="1;mode=block" always>
+<meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" href="/assets/title.png" type="image/x-icon">
+  <title>Fourier Transform</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="Fourier Transform">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="The Gist: If you would like to solve partial derivates easily or process data in the frequency domain, Fourier Transform is the tool you need. If you interested in reading more, please read more below where I also demonstrate with an example.">
+<meta property="og:description" content="The Gist: If you would like to solve partial derivates easily or process data in the frequency domain, Fourier Transform is the tool you need. If you interested in reading more, please read more below where I also demonstrate with an example.">
+<link rel="canonical" href="https://www.karanjayachandra.com/signalprocessing/2021/10/02/fourier-transform.html">
+<meta property="og:url" content="https://www.karanjayachandra.com/signalprocessing/2021/10/02/fourier-transform.html">
+<meta property="og:site_name" content="Karan Jayachandra">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-10-02T16:42:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Fourier Transform">
+<script type="application/ld+json">
+{"headline":"Fourier Transform","dateModified":"2021-10-02T16:42:00+00:00","datePublished":"2021-10-02T16:42:00+00:00","description":"The Gist: If you would like to solve partial derivates easily or process data in the frequency domain, Fourier Transform is the tool you need. If you interested in reading more, please read more below where I also demonstrate with an example.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.karanjayachandra.com/signalprocessing/2021/10/02/fourier-transform.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.karanjayachandra.com/assets/logo.png"}},"url":"https://www.karanjayachandra.com/signalprocessing/2021/10/02/fourier-transform.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" type="text/css" href="/assets/main-light.css">
+</head>
+<body>
+    <div class="container">
+<header>
+  <div>
+    <div class="logo"><img src="/assets/logo.png" alt="Logo" height="30" width="50"></div>
+    <div class="menu">
+      <ul>
+<li><a href="/">🏠 Home</a></li>
+<li><a href="/cv/">📜 CV</a></li>
+<li><a href="/blog/">📖 Blog</a></li>
+</ul>
+    </div>
+  </div>
+</header>
+<main>
+      <h1>Fourier Transform</h1>
+2021-10-02 16:42
+<br><br>
+<p><strong>The Gist:</strong> If you would like to solve partial derivates easily or process data in the frequency domain, Fourier Transform is the tool you need. If you interested in reading more, please read more below where I also demonstrate with an example.</p>
+
+<h1 id="the-basics">The Basics</h1>
+<p>The Fourier Transform represents a sequence of numbers (which I will refer to as a signal henceforth) as a summation of sinusoidal waves. It terms of the mathematics, it finds the right combinations of sine waves that need to be added to create the original signal. A sine wave however has two defining properties, the amplitude and the phase. Therefore, the Fourier transform calculates not only the amplitudes of the individual sine waves that make up the signal but also the phase of the waves. This makes the result of the Fourier transform a complex valued result. The Fourier transform can be calculated with the output containing different number of sine waves. For a more accurate description, in most cases, more sine waves are necessary. In the below diagram, this is demonstrated. The original sequence is a square wave shown in the top graph. This seqeunce is approximated using the different number of sine waves shown in the middle graph. As you can see in the graph on the bottom, the more the number of sine waves, the closer it is to the original sequence.</p>
+
+<p><img src="https://www.karanjayachandra.com/assets/images/fourier_transform.png" alt="Fourier Transform Graph"></p>
+
+<p>You can have a look at the python code used to generate the graph above <a href="https://github.com/MrKaranJ/MrKaranJ.github.io/blob/gh-pages/_code/fouriertransform.py">here</a>.</p>
+
+<h1 id="the-application">The Application</h1>
+<p>Partial Derivatives are much easier to solve in the frequency domain because of certain properties. This means that instead of solving complex integrals and differentials, we can convert the entire equation to the fourier domain, simplify it and then convert it back the original domain. The fourier transform is the basis for any kind of Frequency Analysis. This can help us observe different phenomenon such as the chemical composition of the stars to which frequency channel to use to make sure our home wifi signal has adequate strength.</p>
+
+<p>Although this was a basic introduction to the Fourier Transform, I will create more articles with the in-depth mathematics in the future. In the mean time you can refer to <a href="https://www.pearson.com/us/higher-education/product/Proakis-Digital-Signal-Processing-Principles-Algorithms-and-Applications-RENTAL-EDITION-5th-Edition/9780137348244.html">this</a> text book if needed.</p>
+
+
+    </main><footer>
+  <div id="navigation">
+  <a href="https://t.me/KaranJayachandra">Message</a> <a href="mailto:mail@karanjayachandra.com">Email</a> <a href="https://www.linkedin.com/in/karanjayachandra/">LinkedIn</a> <a href="https://github.com/KaranJayachandra">GitHub</a>
+  </div>
+</footer>
+</div>
+  </body>
+</html>
